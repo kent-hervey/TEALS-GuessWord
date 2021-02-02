@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class HangmanApp2 {
 	public static final int MAX_GUESSES = 6;
@@ -6,8 +9,13 @@ public class HangmanApp2 {
 
 		printIntroductoryStatement(MAX_GUESSES);
 		String[] sourceWords = readTextFileReturnArrayOfWords("hangman.txt");
+		
+		//temp for testing to confirm sourceWords is valid
+		System.out.println("the second word is:  " + sourceWords[1]);
 
 		String chosenWord = chooseWord(sourceWords);
+		//temp for testing:
+		System.out.println("chosen word is:  " + chosenWord);
 
 		outputInformationChosenWord(chosenWord);
 
@@ -77,17 +85,41 @@ public class HangmanApp2 {
 
 	private static String chooseWord(String[] sourceWords) {
 		// TODO Auto-generated method stub
-		return null;
+		return "tempword";
 	}
 
 	private static String[] readTextFileReturnArrayOfWords(String string) {
-		// TODO Auto-generated method stub
-		return null;
+        Scanner console = new Scanner(System.in);
+        Scanner input = null;
+		try {
+			input = new Scanner(new File("hangman.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        String[] dictionary = readDictionary(input);
+		return dictionary;
 	}
 
 	private static void printIntroductoryStatement(int maximuGuesses) {
 		System.out.println("explaining the game");
 
 	}
+	
+	//copied from assignment
+    public static String[] readDictionary(Scanner input) {
+        // read first line, extract int
+        int count = new Scanner(input.nextLine()).nextInt();
+        String[] words = new String[count];
+        int i = 0;
+        while (input.hasNextLine()) {
+            words[i] = input.nextLine();
+            i++;
+        }
+        return words;
+    }
+
+	
+	
 
 }
