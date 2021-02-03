@@ -22,12 +22,15 @@ public class HangmanApp2 {
 
 		// loop until word found or guesses consumed
 
-		int numberGuesses = 0;
+		int numberGuesses =  1;
 		boolean notFinished = true;
 		boolean guessedCorrect = false;
 		while (notFinished) {
 
 			String guessedLetter = fetchLetterFromUser();
+			
+			//for testing only:
+			System.out.println("letter you guessed:  " + guessedLetter);
 
 			guessedCorrect = processAndReturnResultGuess(guessedLetter);
 
@@ -37,15 +40,18 @@ public class HangmanApp2 {
 				notFinished = false;
 			} else {
 				// user name wrong guess
+				System.out.println("just inside the else for wrong guess and numberGuesses is:  " + numberGuesses);
 				informUserOfMissedGuess(numberGuesses);
 
 			}
 
-			numberGuesses++;
+
 			if (numberGuesses >= MAX_GUESSES) {
 				informUserOfLoss(numberGuesses);
 				notFinished = false;
 			}
+						numberGuesses++;
+			
 
 		}
 
@@ -58,7 +64,7 @@ public class HangmanApp2 {
 
 	private static void informUserOfMissedGuess(int numberGuesses) {
 		// TODO Auto-generated method stub
-		System.out.println("you missed and etc");
+		System.out.println("you missed again and your total number of guesses is now " + numberGuesses + " out of maximum " + MAX_GUESSES);
 
 	}
 
@@ -75,7 +81,12 @@ public class HangmanApp2 {
 
 	private static String fetchLetterFromUser() {
 		// TODO Auto-generated method stub
-		return null;
+		Scanner console = new Scanner(System.in);
+		String usersGuessedLetter = "";
+		usersGuessedLetter = console.next();
+		
+		
+		return usersGuessedLetter;
 	}
 
 	private static void outputInformationChosenWord(String chosenWord) {
