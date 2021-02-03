@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class HangmanApp2 {
@@ -84,8 +85,21 @@ public class HangmanApp2 {
 	}
 
 	private static String chooseWord(String[] sourceWords) {
-		// TODO Auto-generated method stub
-		return "tempword";
+		// choosing random word by selecting a random index using random between zero and sourceWords length minus 1
+		String choosenWord = "tempWord";
+	    Random random = new Random();
+	    int randomIndex = random.nextInt(sourceWords.length);
+	    //below code block statement for testing purposes
+//	    System.out.println("maximum index should be " + (sourceWords.length-1));
+//	    System.out.println("final word in list should be:  " + sourceWords[sourceWords.length-1]);
+//	    for(int i=0; i<1000000; i++) {
+//	    	int randomIndex2 = random.nextInt(sourceWords.length);
+//	    	if(randomIndex2==sourceWords.length-1) {
+//	    		System.out.println("index is:  " + randomIndex2 + " and resulting word is " + sourceWords[randomIndex2]);
+//	    	}
+//	    }
+		
+		return sourceWords[randomIndex];
 	}
 
 	private static String[] readTextFileReturnArrayOfWords(String string) {
