@@ -22,35 +22,41 @@ public class HangmanApp2 {
 
 		// loop until word found or guesses consumed
 
-		int numberGuesses =  1;
+		String guessedCorrectLetters="";
+		int numberWrongGuesses =  0;
 		boolean notFinished = true;
 		boolean guessedCorrect = false;
 		while (notFinished) {
 
-			String guessedLetter = fetchLetterFromUser();
+			String guessedLetter = fetchLetterFromUser(guessedCorrectLetters, chosenWord);
 			
 			//for testing only:
 			System.out.println("letter you guessed:  " + guessedLetter);
+			
+			
 
-			guessedCorrect = processAndReturnResultGuess(guessedLetter);
+			guessedCorrect = processAndReturnResultGuess(chosenWord, guessedLetter, guessedCorrectLetters);
+			
 
 			if (guessedCorrect) {
-				informUserOfWin(numberGuesses);
+				guessedCorrectLetters = guessedCorrectLetters + guessedLetter;
+				informUserOfWin(numberWrongGuesses);
 
 				notFinished = false;
 			} else {
 				// user name wrong guess
-				System.out.println("just inside the else for wrong guess and numberGuesses is:  " + numberGuesses);
-				informUserOfMissedGuess(numberGuesses);
+				numberWrongGuesses++;
+				System.out.println("just inside the else for wrong guess and numberGuesses is:  " + numberWrongGuesses);
+				informUserOfMissedGuess(numberWrongGuesses);
 
 			}
 
 
-			if (numberGuesses >= MAX_GUESSES) {
-				informUserOfLoss(numberGuesses);
+			if (numberWrongGuesses >= MAX_GUESSES) {
+				informUserOfLoss(numberWrongGuesses);
 				notFinished = false;
 			}
-						numberGuesses++;
+
 			
 
 		}
@@ -74,12 +80,22 @@ public class HangmanApp2 {
 
 	}
 
-	private static boolean processAndReturnResultGuess(String guessedLetter) {
-		// TODO Auto-generated method stub
+	private static boolean processAndReturnResultGuess(String chosenWord, String guessedLetter, String previouslyGuessedLetters) {
+		// determine if guess is good and return true if so
+		
+		//first check to see if newly guessed letter is already in correct list, if so, return false and inform user to try again
+		
+		
+		//now check to see if guessedLetter is in chosenWord.  If so, inform user and return true
+		
+		
+		
+		
 		return false;
 	}
 
-	private static String fetchLetterFromUser() {
+	private static String fetchLetterFromUser(String guessedCorrectLetters, String chosenWord) {
+		printCurrentWordWithCorrectLetters(guessedCorrectLetters, chosenWord);
 		// TODO Auto-generated method stub
 		Scanner console = new Scanner(System.in);
 		String usersGuessedLetter = "";
@@ -87,6 +103,12 @@ public class HangmanApp2 {
 		
 		
 		return usersGuessedLetter;
+	}
+
+	private static void printCurrentWordWithCorrectLetters(String guessedCorrectLetters, String chosenWord ) {
+		//Print a string that has a period for unguessed characters and the correct character for correctly guessed characters
+		//example:  target word is better; user has only guessed 'e' print .e..e.r
+		
 	}
 
 	private static void outputInformationChosenWord(String chosenWord) {
