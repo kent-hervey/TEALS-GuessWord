@@ -1,3 +1,4 @@
+//Provided Answer
 // This program plays a game of hangman with the user.  It reads a dictionary
 // of words to choose from.
 
