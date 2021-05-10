@@ -42,7 +42,7 @@ public class HangmanApp2 {
 				guessedCorrectLetters = guessedCorrectLetters + guessedLetter;
 				informUserOfWin(numberWrongGuesses);
 
-				notFinished = false;
+				//notFinished = false;
 			} else {
 				// user name wrong guess
 				numberWrongGuesses++;
@@ -87,10 +87,12 @@ public class HangmanApp2 {
 		
 		
 		//now check to see if guessedLetter is in chosenWord.  If so, inform user and return true
-		
-		
-		
-		
+		for(int i =0; i<chosenWord.length(); i++) {
+			char letter = chosenWord.charAt(i);
+			if(guessedLetter.charAt(0)==letter) {
+				return true;
+			}
+		}
 		return false;
 	}
 
