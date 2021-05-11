@@ -1,4 +1,4 @@
-For explanation of Utility Class files and its tester, see:  [click here](InstructorReadME.md)
+For explanation of Utility Class files and its tester, see:  [click here](InstructorREADME.md)
 
 
 Chapter 7, pp2  Question
