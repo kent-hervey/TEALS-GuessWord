@@ -19,8 +19,8 @@ public class MayClassTester {
 		String foundWord = HangmanUtility.getRandomWord(dictionary);
 		System.out.println("random word found:  " + foundWord);
 		
-		
-		
+		String usersGuessedLetter = HangmanUtility.getGuessFromUser();
+		System.out.println("user entered this letter:  " + usersGuessedLetter);
 		
 		
 		
