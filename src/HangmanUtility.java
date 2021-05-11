@@ -115,8 +115,67 @@ public class HangmanUtility {
 	static boolean isUsersGuessInWord(String foundWord, String usersGuessedLetter) {
 		return foundWord.contains(usersGuessedLetter);
 	}
+
+	/**
+	 * 
+	 * @param foundWord
+	 * @return number of failed guesses
+	 */
+	public static int runSixGuessesTracked(String foundWord) {
+		int numWrong = 0;
+		String correctlyGuessedLetters = "";
+		for(int i=0; i<6; i++) {
+			String thisGuess = getGuessFromUser();
+			boolean guessRight = HangmanUtility.isUsersGuessInWord(foundWord, thisGuess);
+			if(!guessRight) {
+				numWrong++;
+				System.out.println("sorry, you guessed wrong; total wrong guesss:  " + numWrong + " out of " + (i +1));
+			}
+			else {
+				correctlyGuessedLetters += thisGuess;
+				int unfoundLetters = showWordWithRightGuesses(foundWord, correctlyGuessedLetters);
+				System.out.println("-good guess; " + thisGuess + " is in the word; you only guessed wrong this many times: " + numWrong);
+			}
+		}
+		return numWrong;
+	}
+
+	private static int showWordWithRightGuesses(String foundWord, String correctlyGuessedLetters) {
+		//loop through the target/foundWord checking for matches
+		int numberUnfoundWordPositions =0; //if word has only distinct letters, then this is also the number of letters unmatched
+		for (int i = 0; i <foundWord.length(); i++) {
+			char letter = foundWord.charAt(i);
+			//if the index is greater than 0, then one of the guessed letters is in the found word.  The index is the right place to either show the word's letter, or a period
+			if(correctlyGuessedLetters.indexOf(letter) >= 0) {
+				System.out.print(letter);
+			} else {
+				numberUnfoundWordPositions++;
+				System.out.print(".");
+			}
+		}
+		return numberUnfoundWordPositions;
+	}
 	
 	
+	public static int runSixGuessesOrMore(String foundWord) {
+			int numWrong = 0;
+			String correctlyGuessedLetters = "";
+			int unfoundLetters = foundWord.length();
+			while(unfoundLetters>0 && numWrong<MayClassTester.MAX_GUESSES ) {
+				String thisGuess = getGuessFromUser();
+				boolean guessRight = HangmanUtility.isUsersGuessInWord(foundWord, thisGuess);
+				if(!guessRight) {
+					numWrong++;
+					System.out.println("sorry, you guessed wrong; total wrong guesss:  " + numWrong);
+				}
+				else {
+					correctlyGuessedLetters += thisGuess;
+					unfoundLetters = showWordWithRightGuesses(foundWord, correctlyGuessedLetters);
+					System.out.println("-good guess; " + thisGuess + " is in the word; you only guessed wrong this many times: " + numWrong);
+				}
+			}
+			return numWrong;
+		}
 	
 	
 }
