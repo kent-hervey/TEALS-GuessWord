@@ -1,3 +1,6 @@
+For explanation of Utility Class files and its tester, see:  [click here](InstructorReadME.md)
+
+
 Chapter 7, pp2  Question
 Write a game of Hangman using arrays. Allow the user to guess letters and represent which letters have been guessed in an array.
 
@@ -104,3 +107,4 @@ public class hangman {
 
     
 }
+
