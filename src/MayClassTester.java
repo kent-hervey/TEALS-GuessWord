@@ -42,10 +42,13 @@ public class MayClassTester {
 		
 		//asks user six times for letters, then checks if each is in foundWord, tracking how many letters missing
 		//returns number of failed guesses
-		int numberBadGuessesOfSixTracked = HangmanUtility.runSixGuessesTracked(foundWord); 
-		System.out.println("for the word " + foundWord + " you guessed 6 times, with this many wrong guesses:  " + numberBadGuessesOfSix);
+//		int numberBadGuessesOfSixTracked = HangmanUtility.runSixGuessesTracked(foundWord); 
+//		System.out.println("xfor the word " + foundWord + " you guessed 6 times, with this many wrong guesses:  " + numberBadGuessesOfSixTracked);
 		
-		
+		//asks user until word complete or 6 failures for letters, then checks if each is in foundWord, tracking how many letters missing
+		//returns number of failed guesses
+		int numberBadGuessesOfSixOrMore = HangmanUtility.runSixGuessesOrMore(foundWord); 
+		System.out.println("zfor the word " + foundWord + " you guessed with this many wrong guesses:  " + numberBadGuessesOfSixOrMore);
 
 	}
 
