@@ -15,9 +15,9 @@ public class MayClassTester {
 		//testing dictionary by seeing output
 		HangmanUtility.printFirst10Array(dictionary);
 		
-		
-		String foundWord = HangmanUtility.getRandomWord();
-		
+		//tests getRandomWord which should return a word from dictionary
+		String foundWord = HangmanUtility.getRandomWord(dictionary);
+		System.out.println("random word found:  " + foundWord);
 		
 		
 		
