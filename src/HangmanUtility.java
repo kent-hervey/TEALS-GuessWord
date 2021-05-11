@@ -45,6 +45,21 @@ public class HangmanUtility {
 		for(int i = 0; i <10; i++)
 			System.out.println(array[i]);	
 	}
+
+	/**
+	 * collects a single letter from user via console; forces repeated attempts if user enters a string with more whan one letter
+	 * @return user's entered letter
+	 */
+	static String getGuessFromUser() {
+		Scanner console = new Scanner(System.in);
+		String guess = console.next();
+		while (guess.length()>1) {
+			System.out.println("Please enter a single character");
+			guess = console.next();
+		}
+		return guess;
+
+	}
 	
 
 }
