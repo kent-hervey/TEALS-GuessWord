@@ -62,4 +62,61 @@ public class HangmanUtility {
 	}
 	
 
+	/**
+	 * draws Gallows with size based on the number of badGuesses passed in
+	 * @param badGuesses
+	 */
+    public static void printGallows(int badGuesses) {
+        System.out.println(" +--+");
+        System.out.println(" |  |");
+        if (badGuesses == 0) {
+            System.out.println(" |");
+        } else {
+            System.out.println(" |  O");
+        }
+        if (badGuesses <= 1) {
+            System.out.println(" |");
+        } else if (badGuesses <= 4) {
+            System.out.println(" |  |");
+        } else if (badGuesses == 5) {
+            System.out.println(" |  |\\");
+        } else {
+            System.out.println(" | /|\\");
+        }
+        if (badGuesses <= 2) {
+            System.out.println(" |");
+        } else if (badGuesses == 3) {
+            System.out.println(" |   \\");
+        } else {
+            System.out.println(" | / \\");
+        }
+        System.out.println(" |");
+        System.out.println(" +-----");
+    }
+
+	static int runSixGuesses(String foundWord) {
+		int numWrong =0;
+		for(int i =0; i<6; i++) {
+			String thisGuess = getGuessFromUser();
+			boolean guessRight = HangmanUtility.isUsersGuessInWord(foundWord, thisGuess);
+			if(!guessRight) {
+				numWrong++;
+				System.out.println("sorry, you guessed wrong; total wrong guesss:  " + numWrong + " out of " + (i +1));
+			}
+			else {
+				System.out.println("good guess; " + thisGuess + " is in the word; you only guessed wrong this many times: " + numWrong);
+			}
+		}
+		System.out.println("here is the gallows");
+		HangmanUtility.printGallows(numWrong);
+		return numWrong;
+	}
+
+	static boolean isUsersGuessInWord(String foundWord, String usersGuessedLetter) {
+		return foundWord.contains(usersGuessedLetter);
+	}
+	
+	
+	
+	
 }
