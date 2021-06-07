@@ -47,7 +47,7 @@ public class HangmanUtility {
 	}
 
 	/**
-	 * collects a single letter from user via console; forces repeated attempts if user enters a string with more whan one letter
+	 * collects a single letter from user via console; forces repeated attempts if user enters a string with more than one letter
 	 * @return user's entered letter
 	 */
 	static String getGuessFromUser() {

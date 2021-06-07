@@ -47,6 +47,7 @@ public class MayClassTester {
 		
 		//asks user until word complete or 6 failures for letters, then checks if each is in foundWord, tracking how many letters missing
 		//returns number of failed guesses
+		foundWord ="aaaabbbb";
 		int numberBadGuessesOfSixOrMore = HangmanUtility.runSixGuessesOrMore(foundWord); 
 		System.out.println("zfor the word " + foundWord + " you guessed with this many wrong guesses:  " + numberBadGuessesOfSixOrMore);
 
